@@ -1,0 +1,58 @@
+<template>
+  <b-row class="todo-item mx-0">
+    <b-col cols="10" class="p-0">
+      <b-form-checkbox
+        class="p-0"
+        v-if="item"
+        :id="'checkbox-' + item.id"
+        @change="checkItem"
+        :name="'checkbox-' + item.id"
+        :checked="isChecked"
+      >
+        {{ item.name }}
+      </b-form-checkbox>
+    </b-col>
+    <b-col cols="2" class="p-0">
+      <div class="trash-icon text-right" @click="removeItem">
+        <svg
+          width="15"
+          height="16"
+          viewBox="0 0 15 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.1428 1.00001H10.2143L9.90654 0.41563C9.84135 0.290697 9.74094 0.185606 9.61659 0.11218C9.49224 0.0387537 9.34889 -9.46239e-05 9.20267 5.47897e-06H5.46071C5.31482 -0.00052985 5.17173 0.0381736 5.04782 0.111682C4.92391 0.18519 4.8242 0.290529 4.76012 0.41563L4.45238 1.00001H0.523809C0.384886 1.00001 0.251653 1.05268 0.15342 1.14645C0.0551869 1.24022 0 1.3674 0 1.5L0 2.5C0 2.63261 0.0551869 2.75979 0.15342 2.85356C0.251653 2.94733 0.384886 3 0.523809 3H14.1428C14.2818 3 14.415 2.94733 14.5132 2.85356C14.6115 2.75979 14.6667 2.63261 14.6667 2.5V1.5C14.6667 1.3674 14.6115 1.24022 14.5132 1.14645C14.415 1.05268 14.2818 1.00001 14.1428 1.00001ZM1.74167 14.5938C1.76665 14.9746 1.94273 15.332 2.23406 15.5932C2.5254 15.8545 2.91009 16 3.30982 16H11.3568C11.7566 16 12.1413 15.8545 12.4326 15.5932C12.7239 15.332 12.9 14.9746 12.925 14.5938L13.619 4H1.04762L1.74167 14.5938Z"
+            fill="#CFD2D4"
+          />
+        </svg>
+      </div>
+    </b-col>
+  </b-row>
+</template>
+
+<script>
+export default {
+  name: "ToDoPanel",
+  components: {},
+  data() {
+    return {
+      isChecked: this.item.checked,
+    };
+  },
+  props: {
+    item: Object,
+  },
+  methods: {
+    checkItem() {
+      this.$emit("checkItem", this.item);
+    },
+    removeItem() {
+      this.$emit("setDeleteItem", this.item);
+    },
+  },
+};
+</script>
+ 
+<style scoped lang="scss">
+</style>

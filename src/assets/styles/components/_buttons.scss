@@ -1,0 +1,26 @@
+.btn-wrapper {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+.btn {
+    font-size: 1.6rem;
+    border-radius: 0.4rem;
+    padding: 0.6rem 0;
+    display: block;
+    width: 100%;
+    padding: 0 1.6rem;
+    height: 4.2rem;
+}
+.inputWrapper{
+    width: 100%;
+}
+
+@include media-breakpoint-up(md) {
+    .btn {
+        width: auto;
+    }
+    .btn-wrapper {
+        margin-left:1.3rem;
+        width: auto;
+    }
+}
